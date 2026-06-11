@@ -62,14 +62,30 @@ const audio = document.getElementById('bgAudio');
 const toggle = document.getElementById('visionToggle');
 const player = document.getElementById('visionPlayer');
 
-toggle.addEventListener('click', () => {
-  if(audio.paused){
+let userPaused = false;
+
+function startAudio(){
+  if(audio.paused && !userPaused){
     audio.play().then(() => {
       player.classList.add('playing');
-    }).catch(() => {
-      // Autoplay blocked or file missing — silently ignore
-    });
+    }).catch(() => {});
+  }
+}
+
+// Start on first interaction anywhere on the page
+['click','touchstart','keydown'].forEach(evt => {
+  document.addEventListener(evt, startAudio, { once: true, passive: true });
+});
+
+// Orb still works as manual play/pause toggle
+toggle.addEventListener('click', () => {
+  if(audio.paused){
+    userPaused = false;
+    audio.play().then(() => {
+      player.classList.add('playing');
+    }).catch(() => {});
   } else {
+    userPaused = true;
     audio.pause();
     player.classList.remove('playing');
   }
