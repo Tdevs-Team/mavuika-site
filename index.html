@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genshin Impact Zone — Forged in Pyro</title>
+<meta name="description" content="Genshin Impact Zone — funny shorts, memes, trending topics and gameplay highlights for Travelers everywhere.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Ember particle canvas -->
+<canvas id="embers"></canvas>
+
+<!-- Audio: Vision crystal player -->
+<div class="vision-player" id="visionPlayer">
+  <button class="vision-orb" id="visionToggle" aria-label="Play background music">
+    <span class="orb-glyph">炎</span>
+    <span class="orb-ring"></span>
+  </button>
+  <div class="vision-track">
+    <span class="vision-label">Sounds of Natlan</span>
+    <div class="vision-bars">
+      <i></i><i></i><i></i><i></i><i></i>
+    </div>
+  </div>
+  <audio id="bgAudio" loop preload="none">
+    <source src="audio/natlan-ambience.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark">獄</span>
+      <span class="brand-text">Genshin Impact <em>Zone</em></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#videos">Latest</a>
+      <a href="#about">The Travelers</a>
+      <a href="#socials">Follow</a>
+    </nav>
+    <a class="nav-cta" href="https://www.youtube.com/@Genshinimpactzone?sub_confirmation=1" target="_blank" rel="noopener">Subscribe</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">— A Channel Lit by Two Travelers —</p>
+    <h1 class="hero-title">
+      <span class="line">GENSHIN IMPACT</span>
+      <span class="line line-fire">ZONE</span>
+    </h1>
+    <p class="hero-sub">
+      Mondstadt vibes. Anemo energy. Pyro chaos.
+      Funny shorts, memes, trends, and gameplay highlights —
+      forged for Travelers, casual or hardcore.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-fire" href="https://www.youtube.com/@Genshinimpactzone" target="_blank" rel="noopener">
+        Watch on YouTube
+      </a>
+      <a class="btn btn-ghost" href="#videos">Latest Uploads ↓</a>
+    </div>
+  </div>
+  <div class="hero-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,90 1080,-10 1440,40 L1440,80 L0,80 Z"/></svg>
+  </div>
+</section>
+
+<!-- LATEST VIDEOS -->
+<section class="videos" id="videos">
+  <div class="section-head">
+    <p class="eyebrow">Ignis Reel</p>
+    <h2>Latest from the Forge</h2>
+    <p class="section-sub">Fresh uploads, edits, and shorts — straight from the embers.</p>
+  </div>
+
+  <div class="reel" id="videoReel">
+    <!-- Each card embeds the channel uploads playlist; replace data-video with real video IDs as you publish -->
+    <article class="video-card">
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=Genshinimpactzone" title="Genshin Impact Zone latest video" loading="lazy" allowfullscreen></iframe>
+      </div>
+      <div class="video-meta">
+        <span class="video-tag">Latest Upload</span>
+        <h3>Subscribe for new clips weekly</h3>
+      </div>
+    </article>
+
+    <article class="video-card placeholder-card">
+      <div class="video-frame placeholder-frame">
+        <span class="placeholder-icon">🔥</span>
+      </div>
+      <div class="video-meta">
+        <span class="video-tag">Coming Soon</span>
+        <h3>Replace this card with your next video ID</h3>
+      </div>
+    </article>
+
+    <article class="video-card placeholder-card">
+      <div class="video-frame placeholder-frame">
+        <span class="placeholder-icon">⚔️</span>
+      </div>
+      <div class="video-meta">
+        <span class="video-tag">Coming Soon</span>
+        <h3>Add gameplay highlight here</h3>
+      </div>
+    </article>
+  </div>
+
+  <a class="btn btn-outline center-btn" href="https://www.youtube.com/@Genshinimpactzone/videos" target="_blank" rel="noopener">
+    See All Videos on YouTube
+  </a>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-head">
+    <p class="eyebrow">Two Visions, One Flame</p>
+    <h2>The Travelers Behind the Channel</h2>
+  </div>
+
+  <div class="duo">
+    <div class="duo-card duo-anemo">
+      <div class="duo-icon">🌬️</div>
+      <h3>The Strategist</h3>
+      <p>Gameplay insights, trends, and in-game mechanics. Breaks down builds, meta shifts, and what's worth your Primogems.</p>
+    </div>
+    <div class="duo-spark">×</div>
+    <div class="duo-card duo-pyro">
+      <div class="duo-icon">🔥</div>
+      <h3>The Storyteller</h3>
+      <p>Humor, edits, and community-driven entertainment. Turns everyday Traveler moments into the memes you screenshot.</p>
+    </div>
+  </div>
+
+  <p class="about-copy">
+    Genshin Impact Zone is jointly run by two dedicated enthusiasts delivering
+    funny, relatable, and trending content for the global Genshin community —
+    from humorous shorts and memes to relatable player moments and light gameplay
+    highlights. Our goal: entertain, connect, and grow with the community while
+    keeping things consistent and original.
+  </p>
+</section>
+
+<!-- SOCIALS -->
+<section class="socials" id="socials">
+  <div class="section-head">
+    <p class="eyebrow">Vision Shards</p>
+    <h2>Follow the Journey</h2>
+  </div>
+
+  <div class="rune-grid">
+    <a class="rune" href="https://www.youtube.com/@Genshinimpactzone" target="_blank" rel="noopener">
+      <span class="rune-icon">▶</span>
+      <span class="rune-name">YouTube</span>
+      <span class="rune-tag">@Genshinimpactzone</span>
+    </a>
+    <a class="rune" href="#" target="_blank" rel="noopener">
+      <span class="rune-icon">𝕏</span>
+      <span class="rune-name">X / Twitter</span>
+      <span class="rune-tag">Add your link</span>
+    </a>
+    <a class="rune" href="#" target="_blank" rel="noopener">
+      <span class="rune-icon">◎</span>
+      <span class="rune-name">TikTok</span>
+      <span class="rune-tag">Add your link</span>
+    </a>
+    <a class="rune" href="#" target="_blank" rel="noopener">
+      <span class="rune-icon">◈</span>
+      <span class="rune-name">Discord</span>
+      <span class="rune-tag">Add your link</span>
+    </a>
+    <a class="rune" href="#" target="_blank" rel="noopener">
+      <span class="rune-icon">📷</span>
+      <span class="rune-name">Instagram</span>
+      <span class="rune-tag">Add your link</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>Genshin Impact Zone — Fan-made content. Genshin Impact and all related assets are property of HoYoverse / miHoYo.</p>
+  <p class="footer-sigil">獄火殿</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
