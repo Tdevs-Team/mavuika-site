@@ -521,7 +521,7 @@ body{
   padding:100px 24px 110px;
   background:
     linear-gradient(180deg, rgba(13,7,5,.92), rgba(13,7,5,.96)),
-    url('images/socials-bg.jpg') center/cover no-repeat;
+    url('images/socials-bg.png') center/cover no-repeat;
   position:relative;
   z-index:1;
 }
