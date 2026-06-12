@@ -1,636 +1,175 @@
-:root{
-  --void:#0d0705;
-  --char:#1a0f0b;
-  --ember:#ff5d2e;
-  --gold:#ffb347;
-  --crimson:#7a1212;
-  --ash:#e8ddd6;
-  --ash-dim:#a8948c;
-  --glow: 0 0 24px rgba(255,93,46,.45);
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Genshin Impact Zone — Forged in Pyro</title>
+<meta name="description" content="Genshin Impact Zone — funny shorts, memes, trending topics and gameplay highlights for Travelers everywhere.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-*{margin:0;padding:0;box-sizing:border-box;}
+<!-- Ember particle canvas -->
+<canvas id="embers"></canvas>
 
-html{scroll-behavior:smooth; -webkit-text-size-adjust:100%; text-size-adjust:100%;}
+<!-- Audio: Vision crystal player -->
+<div class="vision-player" id="visionPlayer">
+  <button class="vision-orb" id="visionToggle" aria-label="Play background music">
+    <span class="orb-glyph">炎</span>
+    <span class="orb-ring"></span>
+  </button>
+  <div class="vision-track">
+    <span class="vision-label">Sounds of Natlan</span>
+    <div class="vision-bars">
+      <i></i><i></i><i></i><i></i><i></i>
+    </div>
+  </div>
+  <audio id="bgAudio" loop preload="auto">
+    <source src="audio/natlan-ambience.m4a" type="audio/mp4">
+    <source src="audio/natlan-ambience.mp3" type="audio/mpeg">
+  </audio>
+</div>
 
-html, body{
-  width:100%;
-  max-width:100vw;
-  overflow-x:hidden;
-}
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <img src="logo.jpeg" alt="Genshin Impact Zone logo" class="brand-mark" width="34" height="34">
+      <span class="brand-text">Genshin Impact <em>Zone</em></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#videos">Latest</a>
+      <a href="#about">The Travelers</a>
+      <a href="#socials">Follow</a>
+    </nav>
+    <a class="nav-cta" href="https://www.youtube.com/@Genshinimpactzone?sub_confirmation=1" target="_blank" rel="noopener">Subscribe</a>
+  </div>
+</header>
 
-body{
-  background:var(--void);
-  color:var(--ash);
-  font-family:'Inter',sans-serif;
-  overflow-x:hidden;
-  position:relative;
-}
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <img src="logo.jpeg" alt="Genshin Impact Zone" class="hero-logo" width="120" height="120">
+    <p class="hero-eyebrow">— A Channel Lit by Two Travelers —</p>
+    <h1 class="hero-title">
+      <span class="line">GENSHIN IMPACT</span>
+      <span class="line line-fire">ZONE</span>
+    </h1>
+    <div class="hero-actions">
+      <a class="btn btn-fire" href="https://www.youtube.com/@Genshinimpactzone" target="_blank" rel="noopener">
+        Watch on YouTube
+      </a>
+      <a class="btn btn-ghost" href="#videos">Latest Uploads ↓</a>
+    </div>
+  </div>
+  <div class="hero-divider">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,90 1080,-10 1440,40 L1440,80 L0,80 Z"/></svg>
+  </div>
+</section>
 
-@media (prefers-reduced-motion: reduce){
-  *{animation:none !important; transition:none !important; scroll-behavior:auto !important;}
-}
+<!-- LATEST VIDEOS -->
+<section class="videos" id="videos">
+  <div class="section-head">
+    <p class="eyebrow">Ignis Reel</p>
+    <h2>Latest from the Forge</h2>
+    <p class="section-sub">Fresh uploads, edits, and shorts — straight from the embers.</p>
+  </div>
 
-/* ---------- Embers canvas ---------- */
-#embers{
-  position:fixed;
-  inset:0;
-  z-index:0;
-  pointer-events:none;
-  opacity:.6;
-}
+  <div class="reel" id="videoReel">
+    <!-- Each card embeds the channel uploads playlist; replace data-video with real video IDs as you publish -->
+    <article class="video-card">
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/iD_TNZgVpqs" title="Genshin Impact Zone latest video" loading="lazy" allowfullscreen></iframe>
+      </div>
+      <div class="video-meta">
+        <span class="video-tag">Latest Upload</span>
+        <h3>Subscribe for new clips weekly</h3>
+      </div>
+    </article>
+  </div>
 
-/* ---------- Vision Player ---------- */
-.vision-player{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  z-index:1000;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  background:rgba(20,10,8,.7);
-  border:1px solid rgba(255,93,46,.35);
-  border-radius:999px;
-  padding:8px 16px 8px 8px;
-  backdrop-filter:blur(8px);
-  box-shadow:0 4px 20px rgba(0,0,0,.5);
-  transition:transform .3s ease;
-}
-.vision-player:hover{transform:translateY(-2px);}
+  <a class="btn btn-outline center-btn" href="https://www.youtube.com/@Genshinimpactzone/videos" target="_blank" rel="noopener">
+    See All Videos on YouTube
+  </a>
+</section>
 
-.vision-orb{
-  position:relative;
-  width:42px;height:42px;
-  border-radius:50%;
-  border:none;
-  cursor:pointer;
-  background:radial-gradient(circle at 35% 30%, var(--gold), var(--ember) 60%, var(--crimson) 100%);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:var(--glow);
-  flex-shrink:0;
-}
-.orb-glyph{
-  font-family:'Cinzel',serif;
-  font-weight:900;
-  color:var(--void);
-  font-size:1rem;
-}
-.orb-ring{
-  position:absolute;
-  inset:-4px;
-  border:1px solid rgba(255,179,71,.5);
-  border-radius:50%;
-  animation:spin 6s linear infinite;
-}
-.orb-ring::before{
-  content:'';
-  position:absolute;
-  top:-2px;left:50%;
-  width:4px;height:4px;
-  background:var(--gold);
-  border-radius:50%;
-  transform:translateX(-50%);
-}
-@keyframes spin{to{transform:rotate(360deg);}}
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-head">
+    <p class="eyebrow">Two Visions, One Flame</p>
+    <h2>The Travelers Behind the Channel</h2>
+  </div>
 
-.vision-track{display:flex;flex-direction:column;gap:4px;}
-.vision-label{
-  font-size:.7rem;
-  letter-spacing:.08em;
-  color:var(--ash-dim);
-  text-transform:uppercase;
-}
-.vision-bars{display:flex;gap:3px;align-items:flex-end;height:14px;}
-.vision-bars i{
-  display:block;
-  width:3px;
-  background:var(--ember);
-  border-radius:2px;
-  height:4px;
-  opacity:.4;
-  transition:height .2s ease, opacity .2s ease;
-}
-.vision-player.playing .vision-bars i{
-  animation:bounce 1s ease-in-out infinite;
-  opacity:1;
-}
-.vision-player.playing .vision-bars i:nth-child(1){animation-delay:0s;}
-.vision-player.playing .vision-bars i:nth-child(2){animation-delay:.1s;}
-.vision-player.playing .vision-bars i:nth-child(3){animation-delay:.2s;}
-.vision-player.playing .vision-bars i:nth-child(4){animation-delay:.3s;}
-.vision-player.playing .vision-bars i:nth-child(5){animation-delay:.15s;}
-@keyframes bounce{
-  0%,100%{height:4px;}
-  50%{height:14px;}
-}
-.vision-player.playing .vision-orb{animation:pulse 1.6s ease-in-out infinite;}
-@keyframes pulse{
-  0%,100%{box-shadow:0 0 24px rgba(255,93,46,.45);}
-  50%{box-shadow:0 0 38px rgba(255,93,46,.8);}
-}
+  <div class="duo">
+    <div class="duo-card duo-anemo">
+      <div class="duo-icon">🌬️</div>
+      <h3>The Strategist</h3>
+      <p>Gameplay insights, trends, and in-game mechanics. Breaks down builds, meta shifts, and what's worth your Primogems.</p>
+    </div>
+    <div class="duo-spark">×</div>
+    <div class="duo-card duo-pyro">
+      <div class="duo-icon">🔥</div>
+      <h3>The Storyteller</h3>
+      <p>Humor, edits, and community-driven entertainment. Turns everyday Traveler moments into the memes you screenshot.</p>
+    </div>
+  </div>
 
-/* ---------- Nav ---------- */
-.nav{
-  position:fixed;
-  top:0;left:0;right:0;
-  z-index:100;
-  background:linear-gradient(to bottom, rgba(13,7,5,.9), rgba(13,7,5,0));
-  backdrop-filter:blur(6px);
-}
-.nav-inner{
-  max-width:1200px;
-  margin:0 auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:18px 32px;
-}
-.brand{
-  display:flex;align-items:center;gap:10px;
-  text-decoration:none;color:var(--ash);
-}
-.brand-mark{
-  width:34px;
-  height:34px;
-  max-width:34px;
-  max-height:34px;
-  flex-shrink:0;
-  border-radius:50%;
-  object-fit:cover;
-  box-shadow:0 0 12px rgba(255,93,46,.5);
-  border:1px solid rgba(255,93,46,.4);
-}
-.brand-text{
-  font-family:'Cinzel',serif;
-  font-weight:700;
-  letter-spacing:.04em;
-  font-size:1.05rem;
-}
-.brand-text em{color:var(--ember);font-style:normal;}
+  <p class="about-copy">
+    Genshin Impact Zone is jointly run by two dedicated enthusiasts delivering
+    funny, relatable, and trending content for the global Genshin community —
+    from humorous shorts and memes to relatable player moments and light gameplay
+    highlights. Our goal: entertain, connect, and grow with the community while
+    keeping things consistent and original.
+  </p>
+</section>
 
-.nav-links{display:flex;gap:28px;}
-.nav-links a{
-  color:var(--ash-dim);
-  text-decoration:none;
-  font-size:.92rem;
-  font-weight:500;
-  position:relative;
-  transition:color .25s ease;
-}
-.nav-links a::after{
-  content:'';
-  position:absolute;
-  left:0;bottom:-6px;
-  width:0%;height:2px;
-  background:linear-gradient(90deg,var(--ember),var(--gold));
-  transition:width .25s ease;
-}
-.nav-links a:hover{color:var(--ash);}
-.nav-links a:hover::after{width:100%;}
+<!-- SOCIALS -->
+<section class="socials" id="socials">
+  <div class="section-head">
+    <p class="eyebrow">Vision Shards</p>
+    <h2>Follow the Journey</h2>
+  </div>
 
-.nav-cta{
-  border:1px solid var(--ember);
-  color:var(--ember);
-  text-decoration:none;
-  padding:8px 18px;
-  border-radius:999px;
-  font-size:.85rem;
-  font-weight:600;
-  transition:all .25s ease;
-}
-.nav-cta:hover{
-  background:var(--ember);
-  color:var(--void);
-  box-shadow:var(--glow);
-}
+  <div class="rune-grid">
+    <a class="rune" href="https://www.youtube.com/@Genshinimpactzone" target="_blank" rel="noopener">
+      <span class="rune-icon">▶</span>
+      <span class="rune-name">YouTube</span>
+      <span class="rune-tag">@Genshinimpactzone</span>
+    </a>
+    <div class="rune rune-soon">
+      <span class="rune-icon">𝕏</span>
+      <span class="rune-name">X / Twitter</span>
+      <span class="rune-tag rune-soon-tag">Soon</span>
+    </div>
+    <div class="rune rune-soon">
+      <span class="rune-icon">◎</span>
+      <span class="rune-name">TikTok</span>
+      <span class="rune-tag rune-soon-tag">Soon</span>
+    </div>
+    <div class="rune rune-soon">
+      <span class="rune-icon">◈</span>
+      <span class="rune-name">Discord</span>
+      <span class="rune-tag rune-soon-tag">Soon</span>
+    </div>
+    <div class="rune rune-soon">
+      <span class="rune-icon">📷</span>
+      <span class="rune-name">Instagram</span>
+      <span class="rune-tag rune-soon-tag">Soon</span>
+    </div>
+  </div>
+</section>
 
-@media (max-width:760px){
-  .nav-links{display:none;}
-}
+<!-- FOOTER -->
+<footer class="footer">
+  <p>Genshin Impact Zone — Fan-made content. Genshin Impact and all related assets are property of HoYoverse / miHoYo.</p>
+  <p class="footer-sigil">獄火殿</p>
+</footer>
 
-/* ---------- Hero ---------- */
-.hero{
-  position:relative;
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:120px 24px 80px;
-  z-index:1;
-}
-.hero-bg{
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(ellipse at 50% 110%, rgba(122,18,18,.55), transparent 60%),
-    radial-gradient(ellipse at 20% 0%, rgba(255,93,46,.18), transparent 50%),
-    linear-gradient(180deg, var(--void) 0%, #160a07 60%, var(--char) 100%);
-  z-index:-2;
-}
-.hero-glow{
-  position:absolute;
-  bottom:-20%;
-  left:50%;
-  transform:translateX(-50%);
-  width:140%;
-  height:60%;
-  background:radial-gradient(ellipse at center, rgba(255,93,46,.35), transparent 65%);
-  filter:blur(40px);
-  z-index:-1;
-  animation:emberGlow 6s ease-in-out infinite alternate;
-}
-@keyframes emberGlow{
-  from{opacity:.5;transform:translateX(-50%) scale(1);}
-  to{opacity:.85;transform:translateX(-50%) scale(1.06);}
-}
-
-.hero-logo{
-  width:120px;
-  height:120px;
-  max-width:120px;
-  max-height:120px;
-  border-radius:50%;
-  object-fit:cover;
-  margin:0 auto 28px;
-  display:block;
-  border:2px solid rgba(255,93,46,.5);
-  box-shadow:0 0 40px rgba(255,93,46,.4), 0 0 80px rgba(255,93,46,.15);
-  opacity:0;
-  animation:fadeUp .9s ease forwards;
-}
-
-.hero-eyebrow{
-  font-family:'JetBrains Mono',monospace;
-  font-size:.78rem;
-  letter-spacing:.25em;
-  color:var(--gold);
-  text-transform:uppercase;
-  margin-bottom:24px;
-  opacity:0;
-  animation:fadeUp .8s ease forwards .1s;
-}
-
-.hero-title{
-  font-family:'Cinzel',serif;
-  font-weight:900;
-  line-height:1.05;
-  margin-bottom:28px;
-}
-.hero-title .line{
-  display:block;
-  font-size:clamp(2.6rem, 9vw, 6.5rem);
-  letter-spacing:.05em;
-  color:var(--ash);
-  opacity:0;
-  animation:fadeUp .9s ease forwards .25s;
-}
-.hero-title .line-fire{
-  background:linear-gradient(135deg, var(--gold) 0%, var(--ember) 50%, var(--crimson) 100%);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-  animation:fadeUp .9s ease forwards .45s, flicker 4s ease-in-out infinite 1.4s;
-  text-shadow:0 0 60px rgba(255,93,46,.35);
-}
-@keyframes flicker{
-  0%,100%{filter:brightness(1);}
-  45%{filter:brightness(1.15);}
-  50%{filter:brightness(.95);}
-  55%{filter:brightness(1.1);}
-}
-@keyframes fadeUp{
-  from{opacity:0; transform:translateY(24px);}
-  to{opacity:1; transform:translateY(0);}
-}
-
-.hero-actions{
-  display:flex;
-  gap:16px;
-  justify-content:center;
-  flex-wrap:wrap;
-  opacity:0;
-  animation:fadeUp .9s ease forwards .75s;
-}
-
-.btn{
-  display:inline-block;
-  padding:14px 30px;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:600;
-  font-size:.95rem;
-  letter-spacing:.02em;
-  transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
-}
-.btn-fire{
-  background:linear-gradient(135deg, var(--gold), var(--ember));
-  color:var(--void);
-  box-shadow:0 6px 24px rgba(255,93,46,.35);
-}
-.btn-fire:hover{transform:translateY(-3px); box-shadow:0 10px 32px rgba(255,93,46,.55);}
-
-.btn-ghost{
-  border:1px solid rgba(232,221,214,.25);
-  color:var(--ash);
-}
-.btn-ghost:hover{
-  border-color:var(--ember);
-  color:var(--ember);
-  transform:translateY(-3px);
-}
-
-.btn-outline{
-  border:1px solid var(--ember);
-  color:var(--ember);
-  background:transparent;
-}
-.btn-outline:hover{
-  background:var(--ember);
-  color:var(--void);
-}
-.center-btn{display:block; width:max-content; margin:48px auto 0;}
-
-.hero-divider{
-  position:absolute;
-  bottom:-1px;left:0;right:0;
-  line-height:0;
-}
-.hero-divider svg{
-  width:100%;height:80px;
-  display:block;
-}
-.hero-divider path{fill:var(--char);}
-
-/* ---------- Section heads ---------- */
-.section-head{
-  text-align:center;
-  max-width:680px;
-  margin:0 auto 48px;
-  padding:0 24px;
-}
-.eyebrow{
-  font-family:'JetBrains Mono',monospace;
-  font-size:.75rem;
-  letter-spacing:.25em;
-  color:var(--gold);
-  text-transform:uppercase;
-  margin-bottom:14px;
-}
-.section-head h2{
-  font-family:'Cinzel',serif;
-  font-weight:700;
-  font-size:clamp(1.8rem, 4vw, 2.6rem);
-  margin-bottom:14px;
-}
-.section-sub{color:var(--ash-dim); font-size:1rem; line-height:1.6;}
-
-/* ---------- Videos ---------- */
-.videos{
-  position:relative;
-  background:var(--char);
-  padding:90px 0 100px;
-  z-index:1;
-}
-.reel{
-  display:flex;
-  justify-content:center;
-  gap:24px;
-  overflow-x:auto;
-  padding:8px 24px 24px;
-  max-width:1200px;
-  margin:0 auto;
-  scroll-snap-type:x mandatory;
-  scrollbar-width:thin;
-  scrollbar-color:var(--ember) transparent;
-}
-.reel::-webkit-scrollbar{height:6px;}
-.reel::-webkit-scrollbar-thumb{background:var(--ember); border-radius:4px;}
-
-.video-card{
-  flex:0 0 min(640px, 90vw);
-  scroll-snap-align:start;
-  background:#140b08;
-  border:1px solid rgba(255,93,46,.15);
-  border-radius:14px;
-  overflow:hidden;
-  transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
-}
-.video-card:hover{
-  transform:translateY(-6px);
-  border-color:rgba(255,93,46,.5);
-  box-shadow:0 16px 40px rgba(255,93,46,.15);
-}
-.video-frame{
-  aspect-ratio:16/9;
-  background:#000;
-}
-.video-frame iframe{width:100%;height:100%;border:0;}
-.placeholder-frame{
-  display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(135deg, rgba(255,93,46,.08), rgba(122,18,18,.15));
-  font-size:2.5rem;
-}
-.video-meta{padding:18px 20px;}
-.video-tag{
-  font-family:'JetBrains Mono',monospace;
-  font-size:.7rem;
-  letter-spacing:.15em;
-  text-transform:uppercase;
-  color:var(--ember);
-}
-.video-meta h3{
-  font-family:'Cinzel',serif;
-  font-size:1.05rem;
-  margin-top:8px;
-  font-weight:700;
-  line-height:1.4;
-}
-
-/* ---------- About / Duo ---------- */
-.about{
-  position:relative;
-  padding:100px 24px;
-  z-index:1;
-  background:linear-gradient(180deg, var(--char), var(--void));
-}
-.duo{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:32px;
-  flex-wrap:wrap;
-  max-width:900px;
-  margin:0 auto 48px;
-}
-.duo-card{
-  flex:1 1 280px;
-  max-width:340px;
-  border-radius:16px;
-  padding:36px 28px;
-  text-align:center;
-  border:1px solid rgba(255,255,255,.06);
-  transition:transform .3s ease;
-}
-.duo-card:hover{transform:translateY(-6px);}
-.duo-anemo{
-  background:linear-gradient(160deg, rgba(123,200,196,.08), rgba(123,200,196,.02));
-  border-color:rgba(123,200,196,.25);
-}
-.duo-pyro{
-  background:linear-gradient(160deg, rgba(255,93,46,.1), rgba(122,18,18,.04));
-  border-color:rgba(255,93,46,.3);
-}
-.duo-icon{font-size:2.4rem; margin-bottom:14px;}
-.duo-card h3{
-  font-family:'Cinzel',serif;
-  font-size:1.2rem;
-  margin-bottom:10px;
-}
-.duo-card p{color:var(--ash-dim); font-size:.92rem; line-height:1.6;}
-.duo-spark{
-  font-family:'Cinzel',serif;
-  font-size:1.6rem;
-  color:var(--gold);
-  text-shadow:0 0 20px rgba(255,179,71,.6);
-}
-
-.about-copy{
-  max-width:700px;
-  margin:0 auto;
-  text-align:center;
-  color:var(--ash-dim);
-  line-height:1.8;
-  font-size:.98rem;
-}
-
-/* ---------- Socials ---------- */
-.socials{
-  padding:100px 24px 110px;
-  background:var(--void);
-  position:relative;
-  z-index:1;
-}
-.rune-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
-  gap:20px;
-  max-width:920px;
-  margin:0 auto;
-}
-.rune{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:10px;
-  text-decoration:none;
-  color:var(--ash);
-  background:#140b08;
-  border:1px solid rgba(255,93,46,.15);
-  border-radius:14px;
-  padding:32px 16px;
-  transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
-}
-.rune:hover{
-  transform:translateY(-6px) scale(1.02);
-  border-color:var(--ember);
-  box-shadow:0 14px 36px rgba(255,93,46,.2);
-}
-.rune-icon{
-  font-size:1.8rem;
-  color:var(--ember);
-  width:52px;height:52px;
-  display:flex;align-items:center;justify-content:center;
-  border:1px solid rgba(255,93,46,.3);
-  border-radius:50%;
-  transition:box-shadow .3s ease;
-}
-.rune:hover .rune-icon{box-shadow:var(--glow);}
-.rune-name{font-family:'Cinzel',serif; font-weight:700; font-size:.95rem;}
-.rune-tag{font-size:.75rem; color:var(--ash-dim); font-family:'JetBrains Mono',monospace;}
-
-/* ---------- Footer ---------- */
-.footer{
-  text-align:center;
-  padding:36px 24px 50px;
-  background:var(--void);
-  border-top:1px solid rgba(255,93,46,.1);
-  position:relative;
-  z-index:1;
-}
-.footer p{
-  color:var(--ash-dim);
-  font-size:.78rem;
-  line-height:1.7;
-  max-width:600px;
-  margin:0 auto;
-}
-.footer-sigil{
-  font-family:'Cinzel',serif;
-  color:var(--ember);
-  margin-top:14px;
-  font-size:1.1rem;
-  letter-spacing:.2em;
-  opacity:.6;
-}
-
-/* ---------- Responsive: tablet ---------- */
-@media (max-width:900px){
-  .nav-inner{padding:14px 20px;}
-  .duo{gap:20px;}
-  .duo-spark{display:none;}
-}
-
-/* ---------- Responsive: mobile ---------- */
-@media (max-width:600px){
-  .nav-inner{padding:12px 16px;}
-  .brand-text{font-size:.9rem;}
-  .nav-cta{padding:7px 14px; font-size:.78rem;}
-
-  .hero{padding:100px 16px 60px; min-height:100svh;}
-  .hero-logo{width:90px; height:90px; max-width:90px; max-height:90px; margin-bottom:20px;}
-  .hero-eyebrow{font-size:.65rem; letter-spacing:.18em; margin-bottom:16px;}
-  .hero-title .line{font-size:clamp(2.1rem, 11vw, 3.2rem);}
-  .hero-actions{flex-direction:column; align-items:stretch; gap:12px; width:100%; max-width:320px; margin:0 auto;}
-  .btn{width:100%; text-align:center; padding:13px 22px;}
-
-  .section-head{margin-bottom:36px;}
-  .section-head h2{font-size:1.6rem;}
-
-  .videos{padding:60px 0 70px;}
-  .reel{padding:8px 16px 20px; gap:16px;}
-  .video-card{flex:0 0 80vw;}
-
-  .about{padding:70px 16px;}
-  .duo{flex-direction:column; gap:16px;}
-  .duo-card{max-width:100%;}
-
-  .socials{padding:70px 16px 80px;}
-  .rune-grid{grid-template-columns:repeat(2, 1fr); gap:14px;}
-  .rune{padding:24px 12px;}
-  .rune-icon{width:44px; height:44px; font-size:1.4rem;}
-
-  .vision-player{
-    bottom:14px; right:14px; left:14px;
-    justify-content:space-between;
-    padding:8px 14px 8px 8px;
-  }
-  .vision-track{flex:1;}
-
-  .footer{padding:28px 16px 40px;}
-}
-
-/* ---------- Responsive: very small phones ---------- */
-@media (max-width:360px){
-  .hero-title .line{font-size:2rem;}
-  .rune-grid{grid-template-columns:1fr 1fr; gap:10px;}
-}
-
-/* ---------- Prevent layout shift / pull-to-refresh bounce ---------- */
-@supports (height: 100svh){
-  .hero{min-height:100svh;}
-}
-body{
-  overscroll-behavior-y:none;
-}
+<script src="script.js"></script>
+</body>
+</html>
