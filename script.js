@@ -90,3 +90,10 @@ toggle.addEventListener('click', () => {
     player.classList.remove('playing');
   }
 });
+
+// ---------- Fix scroll getting trapped by YouTube iframe ----------
+document.querySelectorAll('.video-frame').forEach(frame => {
+  frame.addEventListener('wheel', (e) => {
+    window.scrollBy({ top: e.deltaY, behavior: 'auto' });
+  }, { passive: true });
+});
