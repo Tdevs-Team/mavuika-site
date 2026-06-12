@@ -153,6 +153,9 @@ body{
 .brand-mark{
   width:34px;
   height:34px;
+  max-width:34px;
+  max-height:34px;
+  flex-shrink:0;
   border-radius:50%;
   object-fit:cover;
   box-shadow:0 0 12px rgba(255,93,46,.5);
@@ -246,6 +249,8 @@ body{
 .hero-logo{
   width:120px;
   height:120px;
+  max-width:120px;
+  max-height:120px;
   border-radius:50%;
   object-fit:cover;
   margin:0 auto 28px;
@@ -584,7 +589,7 @@ body{
   .nav-cta{padding:7px 14px; font-size:.78rem;}
 
   .hero{padding:100px 16px 60px; min-height:100svh;}
-  .hero-logo{width:90px; height:90px; margin-bottom:20px;}
+  .hero-logo{width:90px; height:90px; max-width:90px; max-height:90px; margin-bottom:20px;}
   .hero-eyebrow{font-size:.65rem; letter-spacing:.18em; margin-bottom:16px;}
   .hero-title .line{font-size:clamp(2.1rem, 11vw, 3.2rem);}
   .hero-actions{flex-direction:column; align-items:stretch; gap:12px; width:100%; max-width:320px; margin:0 auto;}
